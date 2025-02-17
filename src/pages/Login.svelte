@@ -1,27 +1,47 @@
 <script>
-    import { auth } from "../firebase";
+    import { auth, db } from "../firebase";
     import { signInWithEmailAndPassword, signInAnonymously } from "firebase/auth";
-    import { navigate } from "svelte-routing";
     import { getDoc, doc, setDoc } from "firebase/firestore";
-    import { db } from "../firebase";
+    import { navigate } from "svelte-routing";
 
     let email = "";
     let password = "";
     let errorMsg = "";
+    let successMsg = "";
 
     async function login() {
+        if (!email.includes("@") || password.length < 6) {
+            errorMsg = "Correo o contraseña incorrectos.";
+            return;
+        }
+
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
+            
+            // Obtener rol del usuario desde Firestore
             const userDoc = await getDoc(doc(db, "users", user.uid));
             if (userDoc.exists()) {
-                localStorage.setItem("user", JSON.stringify(userDoc.data()));
-                navigate("/dashboard");
+                const userData = userDoc.data();
+                localStorage.setItem("user", JSON.stringify(userData));
+                successMsg = "Inicio de sesión exitoso. Redirigiendo...";
+                errorMsg = "";
+                
+                setTimeout(() => {
+                    if (userData.role === "admin") {
+                        navigate("/admin-dashboard");
+                    } else if (userData.role === "user") {
+                        navigate("/user-dashboard");
+                    } else {
+                        navigate("/dashboard");
+                    }
+                }, 2000);
             } else {
-                errorMsg = "No se encontraron datos de usuario.";
+                errorMsg = "No se encontró información del usuario.";
             }
         } catch (error) {
-            errorMsg = "Error al iniciar sesión. Verifica tus credenciales.";
+            errorMsg = "Error al iniciar sesión: " + error.message;
+            successMsg = "";
         }
     }
 
@@ -29,10 +49,17 @@
         try {
             const userCredential = await signInAnonymously(auth);
             const user = userCredential.user;
-            await setDoc(doc(db, "users", user.uid), { role: "guest" });
-            navigate("/dashboard");
+            
+            // Guardar rol de invitado en Firestore
+            await setDoc(doc(db, "users", user.uid), { role: "guest" }, { merge: true });
+            localStorage.setItem("user", JSON.stringify({ role: "guest" }));
+            successMsg = "Sesión iniciada como invitado. Redirigiendo...";
+            errorMsg = "";
+            
+            setTimeout(() => navigate("/guest-dashboard"), 2000);
         } catch (error) {
             errorMsg = "Error al iniciar como invitado.";
+            successMsg = "";
         }
     }
 </script>
@@ -44,6 +71,9 @@
         <input type="password" bind:value={password} placeholder="Contraseña" class="input" />
         <button on:click={login} class="button">Ingresar</button>
         <button on:click={loginAsGuest} class="button guest">Ingresar como Invitado</button>
+        {#if successMsg}
+            <p class="success">{successMsg}</p>
+        {/if}
         {#if errorMsg}
             <p class="error">{errorMsg}</p>
         {/if}
@@ -95,6 +125,10 @@
     }
     .guest:hover {
         background-color: #218838;
+    }
+    .success {
+        color: green;
+        margin-top: 10px;
     }
     .error {
         color: red;
