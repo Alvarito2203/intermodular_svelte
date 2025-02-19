@@ -1,66 +1,77 @@
-// GuestDashboard.svelte
 <script>
-    import { onMount } from "svelte";
     import { navigate } from "svelte-routing";
-    import * as d3 from "d3";
 
-    let user = JSON.parse(localStorage.getItem("user")) || { role: "guest" };
-    const modules = [
-        { name: "Explorar", icon: "🔍", path: "/explore", roles: ["guest"] },
-        { name: "Contacto", icon: "📩", path: "/contact", roles: ["guest"] },
-        { name: "Soporte", icon: "🛠", path: "/support", roles: ["admin", "user", "guest"] }
+    const sections = [
+        {
+            title: "Explorar",
+            modules: [
+                { name: "Catálogo", icon: "🔎", path: "/guest/catalog" },
+                { name: "Contacto", icon: "📨", path: "/guest/contact" },
+                { name: "Soporte", icon: "🛠️", path: "/guest/support" }
+            ]
+        },
+        {
+            title: "Acceso Limitado",
+            modules: [
+                { name: "Proyectos (Restringido)", icon: "📁", path: "/register" },
+                { name: "Tareas (Restringido)", icon: "📝", path: "/register" },
+                { name: "Mensajes (Restringido)", icon: "💬", path: "/register" }
+            ]
+        }
     ];
-
-    let filteredModules = modules.filter(module => module.roles.includes(user.role));
 
     function goToModule(path) {
         navigate(path);
     }
-
-    onMount(() => {
-        d3.selectAll(".module-card")
-            .on("mouseover", function () {
-                d3.select(this).transition().duration(200).style("transform", "scale(1.1)");
-            })
-            .on("mouseout", function () {
-                d3.select(this).transition().duration(200).style("transform", "scale(1)");
-            });
-    });
 </script>
 
 <main>
     <h1>Dashboard de Invitado</h1>
-    <div class="grid">
-        {#each filteredModules as module}
-            <button class="module-card" on:click={() => goToModule(module.path)}>
-                <span class="icon">{module.icon}</span>
-                <p>{module.name}</p>
-            </button>
-        {/each}
-    </div>
+    {#each sections as section}
+        <h2>{section.title}</h2>
+        <div class="grid">
+            {#each section.modules as module}
+                <button type="button" class="module-card" on:click={() => goToModule(module.path)} aria-label="{module.name}">
+                    <span class="icon">{module.icon}</span>
+                    <p>{module.name}</p>
+                </button>
+            {/each}
+        </div>
+    {/each}
 </main>
 
 <style>
+    main {
+        text-align: center;
+        padding: 20px;
+    }
+    h2 {
+        margin-top: 30px;
+        color: #555;
+    }
     .grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 20px;
-        max-width: 800px;
-        margin: auto;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+        margin-top: 15px;
     }
     .module-card {
-        background: white;
+        background: #fff;
         padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        text-align: center;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         cursor: pointer;
-        transition: transform 0.2s ease-in-out;
-        border: none;
-        font-size: 16px;
+        transition: transform 0.2s ease;
+    }
+    .module-card:hover {
+        transform: scale(1.05);
     }
     .icon {
-        font-size: 40px;
-        display: block;
+        font-size: 36px;
+        margin-bottom: 8px;
+    }
+    p {
+        margin: 0;
+        font-weight: 600;
     }
 </style>
