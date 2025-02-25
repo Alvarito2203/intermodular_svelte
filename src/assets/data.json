@@ -1,0 +1,123 @@
+{
+    "general": {
+      "explore": {
+        "topSearches": ["Svelte", "Firebase", "D3.js", "Vite", "Odoo", "React", "Vue"],
+        "searchVolume": [120, 98, 150, 80, 60, 140, 110],
+        "dailySearches": [30, 45, 50, 65, 70, 75, 80, 85, 90, 95, 85, 110, 120, 130, 140, 150, 160, 155, 145, 135, 125, 115, 105, 100, 95, 90, 85, 80, 75, 70]
+      },
+      "contact": {
+        "monthlyMessages": [30, 45, 50, 65, 70, 60, 80, 90, 100, 95, 85, 110],
+        "responseRate": 85,
+        "averageResponseTimeMinutes": 15,
+        "messagesByDepartment": {
+          "Ventas": 120,
+          "Soporte": 250,
+          "Marketing": 80,
+          "Recursos Humanos": 60
+        }
+      },
+      "support": {
+        "ticketsOpened": [20, 30, 40, 35, 50, 45, 55, 60, 65, 70, 60, 75],
+        "ticketsClosed": [15, 25, 35, 30, 45, 40, 50, 55, 60, 65, 55, 70],
+        "priorityDistribution": {
+          "Alta": 35,
+          "Media": 50,
+          "Baja": 20
+        },
+        "resolutionTimeDays": {
+          "Promedio": 2.5,
+          "Máximo": 7,
+          "Mínimo": 1
+        }
+      },
+      "news": {
+        "articlesPublished": [3, 5, 4, 6, 8, 7, 9, 10, 12, 11, 9, 13],
+        "mostReadTopics": ["Tech", "Business", "Education", "Health", "Sports"],
+        "viewsPerArticle": [150, 200, 180, 170, 220, 250, 300, 280, 270, 260]
+      }
+    },
+    "gestion": {
+      "projects": {
+        "projectStatus": {
+          "completed": 12,
+          "inProgress": 8,
+          "pending": 5,
+          "cancelled": 2
+        },
+        "monthlyProjects": [2, 3, 4, 3, 5, 6, 5, 7, 8, 6, 5, 9],
+        "budgetUtilization": [75, 80, 85, 78, 82, 90, 95, 88, 92, 96],
+        "projectTypes": {
+          "Desarrollo": 10,
+          "Marketing": 5,
+          "Investigación": 7,
+          "Mantenimiento": 3
+        }
+      },
+      "tasks": {
+        "tasksCompleted": [50, 60, 70, 65, 80, 85, 90, 100, 95, 85, 80, 110],
+        "tasksPending": [10, 12, 8, 15, 18, 20, 22, 19, 15, 10, 9, 8],
+        "tasksByPriority": {
+          "Alta": 25,
+          "Media": 40,
+          "Baja": 15
+        },
+        "averageCompletionTimeHours": 6.5
+      },
+      "clients": {
+        "newClients": [5, 7, 8, 10, 12, 15, 17, 14, 13, 12, 10, 11],
+        "clientSatisfaction": [80, 85, 90, 87, 92, 94, 95, 96, 93, 90, 89, 92],
+        "churnRate": 8,
+        "industriesServed": {
+          "Tecnología": 20,
+          "Salud": 15,
+          "Finanzas": 12,
+          "Educación": 10,
+          "Retail": 8
+        }
+      },
+      "calendar": {
+        "eventsScheduled": [3, 5, 7, 8, 6, 7, 9, 10, 11, 10, 9, 12],
+        "meetingDurationsMinutes": [30, 45, 60, 90, 120],
+        "busyDays": ["Monday", "Wednesday", "Friday"],
+        "eventTypes": {
+          "Reunión": 15,
+          "Webinar": 5,
+          "Capacitación": 8
+        }
+      }
+    },
+    "administracion": {
+      "users": {
+        "totalUsers": 150,
+        "activeUsers": 120,
+        "newUsersMonthly": [5, 8, 10, 12, 15, 18, 20, 17, 16, 14, 13, 19],
+        "userRoles": {
+          "Admin": 10,
+          "Usuario": 100,
+          "Invitado": 40
+        },
+        "averageSessionDurationMinutes": 25
+      },
+      "reports": {
+        "monthlyReports": [2, 4, 5, 6, 7, 8, 9, 10, 11, 9, 8, 12],
+        "reportTypes": {
+          "Financieros": 5,
+          "Operacionales": 7,
+          "Marketing": 4,
+          "Recursos Humanos": 3
+        },
+        "reportApprovalTimeDays": [1, 2, 3, 2.5, 2, 1.5, 1, 2, 2.2, 2, 1.8, 1.6]
+      },
+      "settings": {
+        "updatesApplied": [1, 2, 1, 3, 2, 3, 4, 3, 2, 1, 2, 3],
+        "userPreferencesChanged": [5, 7, 8, 6, 9, 10, 12, 11, 10, 8, 7, 9],
+        "systemUptimePercentage": 99.7
+      },
+      "security": {
+        "loginAttempts": [100, 120, 150, 140, 130, 125, 135, 145, 155, 150, 145, 160],
+        "blockedAccounts": [2, 3, 1, 4, 2, 3, 2, 3, 1, 2, 3, 4],
+        "securityIncidents": [0, 1, 2, 1, 1, 0, 2, 1, 1, 0, 1, 2],
+        "passwordResetRequests": [5, 6, 8, 7, 9, 10, 11, 10, 9, 8, 7, 6]
+      }
+    }
+  }
