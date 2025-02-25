@@ -62,7 +62,7 @@
         <div class="module" on:click={() => toggleChart(module.title)}>
           <span>{module.icon}</span>
           <h3>{module.title}</h3>
-          <canvas bind:this={chartCanvases[module.title]}></canvas>
+          <canvas class="chart" bind:this={chartCanvases[module.title]}></canvas>
         </div>
       {/each}
     </div>
@@ -75,7 +75,7 @@
         <div class="module" on:click={() => toggleChart(module.title)}>
           <span>{module.icon}</span>
           <h3>{module.title}</h3>
-          <canvas bind:this={chartCanvases[module.title]}></canvas>
+          <canvas class="chart" bind:this={chartCanvases[module.title]}></canvas>
         </div>
       {/each}
     </div>
@@ -85,7 +85,7 @@
 <style>
   .module-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(2, 1fr); /* Dos módulos por fila */
     gap: 20px;
     padding: 20px;
   }
@@ -96,13 +96,14 @@
     text-align: center;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
   }
-  canvas {
-    max-width: 100%;
-    height: 100px;
-    display: none;
-  }
-  .module.active canvas {
-    display: block;
+  .chart {
+    width: 100% !important;
+    max-width: 500px;
+    height: 300px !important;
   }
 </style>
