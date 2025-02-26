@@ -1,7 +1,7 @@
 <script>
     import { onMount } from 'svelte';
     import Chart from 'chart.js/auto';
-    import data from './data.json';
+    import data from '../../assets/data.json';
   
     let chartCanvas;
   
