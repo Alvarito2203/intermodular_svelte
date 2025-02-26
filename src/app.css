@@ -65,6 +65,22 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* 🌟 Elimina los puntos de las listas */
+ul {
+  list-style: none; /* Quita los puntos */
+  padding-left: 0;  /* Elimina el espacio izquierdo */
+  margin-left: 0;   /* Evita desplazamientos innecesarios */
+}
+
+/* Mejora el estilo de las listas */
+li {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #213547;
+  padding: 5px 0;
+}
+
+/* Responsividad para diferentes esquemas de color */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

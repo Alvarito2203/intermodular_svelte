@@ -5,37 +5,48 @@
     let securityChart;
   
     const securityData = {
-      labels: ['Intentos de inicio de sesión', 'Cuentas bloqueadas', 'Incidentes de seguridad', 'Restablecimiento de contraseñas'],
+      labels: ['Intentos de Inicio de Sesión', 'Cuentas Bloqueadas', 'Incidentes de Seguridad'],
       datasets: [{
-        label: 'Eventos de Seguridad (Mensuales)',
-        data: [150, 3, 1, 8], // Datos iniciales, puedes cambiarlos dinámicamente
-        backgroundColor: ['#ff6384', '#36a2eb', '#ffcd56', '#4bc0c0'],
-        borderColor: ['#ff6384', '#36a2eb', '#ffcd56', '#4bc0c0'],
-        borderWidth: 1
+        label: 'Seguridad',
+        data: [160, 4, 2],
+        backgroundColor: ['#007bff', '#dc3545', '#ffc107'],
+        borderColor: ['#0056b3', '#a71d2a', '#d39e00'],
+        borderWidth: 2
       }]
     };
   
     onMount(() => {
       new Chart(securityChart, {
-        type: 'bar',
+        type: 'pie',
         data: securityData,
-        options: {
-          responsive: true,
-          scales: {
-            y: { beginAtZero: true }
-          }
-        }
+        options: { responsive: true, maintainAspectRatio: false }
       });
     });
   </script>
   
-  <main>
-    <h1>Seguridad</h1>
-    <canvas bind:this={securityChart}></canvas>
+  <main class="container">
+    <h1>🔒 Seguridad</h1>
+    <p class="description">Monitorea los intentos de inicio de sesión y problemas de seguridad.</p>
+  
+    <div class="content-wrapper">
+      <section class="summary">
+        <h2>📌 Resumen</h2>
+        <ul>
+          <li><strong>🔑 Intentos:</strong> 160</li>
+          <li><strong>🚫 Cuentas Bloqueadas:</strong> 4</li>
+          <li><strong>⚠️ Incidentes:</strong> 2</li>
+        </ul>
+      </section>
+      <section class="chart">
+        <h2>📊 Estadísticas</h2>
+        <div class="chart-container">
+          <canvas bind:this={securityChart}></canvas>
+        </div>
+      </section>
+    </div>
   </main>
   
   <style>
-    h1 { text-align: center; }
-    canvas { max-width: 800px; margin: 20px auto; display: block; }
+    /* MISMO ESTILO QUE USERS.SVELTE */
   </style>
   

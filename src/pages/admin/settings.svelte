@@ -5,34 +5,47 @@
     let settingsChart;
   
     const settingsData = {
-      labels: ['Actualizaciones Aplicadas', 'Preferencias Cambiadas', 'Tiempo de Actividad del Sistema'],
+      labels: ['Actualizaciones Aplicadas', 'Preferencias Modificadas'],
       datasets: [{
-        label: 'Configuraciones y Rendimiento',
-        data: [3, 8, 99.7], // Datos iniciales, puedes actualizarlos dinámicamente
-        backgroundColor: ['#ff9f40', '#ff6384', '#36a2eb'],
-        borderColor: ['#ff9f40', '#ff6384', '#36a2eb'],
-        borderWidth: 1
+        label: 'Configuraciones',
+        data: [3, 9],
+        backgroundColor: ['#17a2b8', '#ff9800'],
+        borderColor: ['#117a8b', '#d39e00'],
+        borderWidth: 2
       }]
     };
   
     onMount(() => {
       new Chart(settingsChart, {
-        type: 'doughnut',
+        type: 'bar',
         data: settingsData,
-        options: {
-          responsive: true,
-        }
+        options: { responsive: true, maintainAspectRatio: false }
       });
     });
   </script>
   
-  <main>
-    <h1>Configuraciones</h1>
-    <canvas bind:this={settingsChart}></canvas>
+  <main class="container">
+    <h1>⚙️ Configuración</h1>
+    <p class="description">Consulta los cambios realizados en la configuración del sistema.</p>
+  
+    <div class="content-wrapper">
+      <section class="summary">
+        <h2>📌 Resumen</h2>
+        <ul>
+          <li><strong>🆕 Actualizaciones:</strong> 3</li>
+          <li><strong>🔧 Preferencias Cambiadas:</strong> 9</li>
+        </ul>
+      </section>
+      <section class="chart">
+        <h2>📊 Actividad</h2>
+        <div class="chart-container">
+          <canvas bind:this={settingsChart}></canvas>
+        </div>
+      </section>
+    </div>
   </main>
   
   <style>
-    h1 { text-align: center; }
-    canvas { max-width: 600px; margin: 20px auto; display: block; }
+    /* MISMO ESTILO QUE USERS.SVELTE */
   </style>
   
