@@ -5,33 +5,47 @@
     let tasksChart;
   
     const tasksData = {
-      labels: ['Tareas Completadas', 'Tareas Pendientes', 'Alta Prioridad', 'Media Prioridad', 'Baja Prioridad'],
+      labels: ['Tareas Completadas', 'Tareas Pendientes'],
       datasets: [{
         label: 'Estado de Tareas',
-        data: [110, 8, 25, 40, 15], // Datos basados en el JSON
-        backgroundColor: ['#4caf50', '#f44336', '#ff9800', '#2196f3', '#9c27b0'],
-        borderColor: ['#4caf50', '#f44336', '#ff9800', '#2196f3', '#9c27b0'],
-        borderWidth: 1
+        data: [110, 8],
+        backgroundColor: ['#4caf50', '#ff9800'],
+        borderColor: ['#1e7e34', '#d39e00'],
+        borderWidth: 2
       }]
     };
   
     onMount(() => {
       new Chart(tasksChart, {
-        type: 'pie',
+        type: 'doughnut',
         data: tasksData,
-        options: {
-          responsive: true,
-        }
+        options: { responsive: true, maintainAspectRatio: false }
       });
     });
   </script>
   
-  <main>
-    <h1>Gestión de Tareas</h1>
-    <canvas bind:this={tasksChart}></canvas>
+  <main class="container">
+    <h1>✅ Tareas</h1>
+    <p class="description">Estado de las tareas asignadas y su progreso.</p>
+  
+    <div class="content-wrapper">
+      <section class="summary">
+        <h2>📌 Resumen</h2>
+        <ul>
+          <li><strong>✅ Completadas:</strong> 110</li>
+          <li><strong>📌 Pendientes:</strong> 8</li>
+        </ul>
+      </section>
+      <section class="chart">
+        <h2>📊 Estado</h2>
+        <div class="chart-container">
+          <canvas bind:this={tasksChart}></canvas>
+        </div>
+      </section>
+    </div>
   </main>
   
   <style>
-    h1 { text-align: center; }
-    canvas { max-width: 600px; margin: 20px auto; display: block; }
+    /* MISMO ESTILO QUE USERS.SVELTE */
   </style>
+  
