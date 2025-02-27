@@ -22,6 +22,10 @@
         options: { responsive: true, maintainAspectRatio: false }
       });
     });
+
+    function goBack() {
+      window.history.back();
+    }
   </script>
   
   <main class="container">
@@ -43,9 +47,24 @@
         </div>
       </section>
     </div>
+    <button class="boton-atras" on:click={goBack}>Volver</button>
   </main>
   
   <style>
+    .boton-atras {
+    background: #c8e2fe;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+
+  .boton-atras:hover {
+    background: #0056b3;
+  }
     /* MISMO ESTILO QUE USERS.SVELTE */
   </style>
   

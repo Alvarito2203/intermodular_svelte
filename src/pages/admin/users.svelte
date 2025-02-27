@@ -28,6 +28,10 @@
         }
       });
     });
+
+    function goBack() {
+      window.history.back();
+    }
   </script>
   
   <main>
@@ -48,6 +52,7 @@
         <canvas bind:this={usersChart}></canvas>
       </div>
     </section>
+    <button class="boton-atras" on:click={goBack}>Volver</button>
   </main>
   
   <style>
@@ -59,5 +64,19 @@
     .user-chart { max-width: 900px; margin: 0 auto; }
     .chart-container { position: relative; height: 400px; width: 100%; }
     canvas { width: 100% !important; height: 100% !important; }
+    .boton-atras {
+    background: #c8e2fe;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+
+  .boton-atras:hover {
+    background: #0056b3;
+  }
   </style>
   
