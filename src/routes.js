@@ -20,7 +20,7 @@ import UserContact from './pages/user/contact.svelte';
 import UserProjects from './pages/user/projects.svelte';
 import UserTasks from './pages/user/tasks.svelte';
 import UserCalendar from './pages/user/calendar.svelte';
-import UserReports from './pages/user/reports.svelte';
+import UserNews from './pages/user/news.svelte';
 import UserClients from './pages/user/clients.svelte';  // ✅ Nuev
 import UserSupport from './pages/user/support.svelte';  // ✅ Nuev
 
@@ -53,7 +53,7 @@ export const routes = {
   '/user/projects': UserProjects,
   '/user/tasks': UserTasks,
   '/user/calendar': UserCalendar,
-  '/user/reports': UserReports,
+  '/user/news': UserNews,
   '/user/clients': UserClients,      // ✅ Añadido
   '/user/support': UserSupport,      // ✅ Añadido
 

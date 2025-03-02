@@ -5,6 +5,10 @@
 
   let contactChartCanvas;
 
+  function goBack() {
+    window.history.back();
+  }
+
   onMount(() => {
     new Chart(contactChartCanvas, {
       type: 'line',
@@ -41,6 +45,7 @@
       <canvas bind:this={contactChartCanvas}></canvas>
     </div>
   </section>
+  <button class="boton-atras" on:click={goBack}>Volver</button>
 </main>
 
 <style>
@@ -120,6 +125,21 @@
   canvas {
     width: 100% !important;
     height: 100% !important;
+  }
+
+  .boton-atras {
+    background: #c8e2fe;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+
+  .boton-atras:hover {
+    background: #0056b3;
   }
 
   @media (max-width: 768px) {

@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import Chart from 'chart.js/auto';
   import data from '../../assets/data.json';
+  import { navigate } from 'svelte-routing';
 
   let eventsScheduledCanvas;
   let meetingDurationsCanvas;
@@ -52,6 +53,10 @@
       options: { responsive: true, maintainAspectRatio: false }
     });
   });
+
+  function goBack() {
+    window.history.back();
+  }
 </script>
 
 <main class="container">
@@ -89,9 +94,19 @@
       </div>
     </section>
   </div>
+
+  <button class="boton-atras" on:click={goBack}>Volver</button>
 </main>
 
 <style>
+  html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden; /* Evita el scroll */
+    font-family: Arial, sans-serif;
+  }
+
   .container {
     display: flex;
     flex-direction: column;
@@ -102,6 +117,8 @@
     background: linear-gradient(135deg, #ffffff, #f8f9fa);
     border-radius: 15px;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    box-sizing: border-box;
   }
 
   h1 {
@@ -176,6 +193,21 @@
   canvas {
     width: 100% !important;
     height: 100% !important;
+  }
+
+  .boton-atras {
+    background-color: #c8e2fe;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+
+  .boton-atras:hover {
+    background-color: #0056b3;
   }
 
   @media (max-width: 768px) {
